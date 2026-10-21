@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Create and share reusable code snippets with a simple link.">
+  <title>CodeShare — Share code simply</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/python.min.js"></script>
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">&lt;/&gt;</span><span>Code<span class="brand-light">Share</span></span></a>
+    <nav><a href="#create">Create snippet</a><a href="#my-snippets">My snippets</a><a href="/docs" target="_blank" rel="noreferrer">API docs ↗</a></nav>
+    <span class="status-pill"><i></i> Ready to share</span>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow"><span class="sparkle">✦</span> YOUR CODE, ONE LINK AWAY</div>
+      <h1>Good code deserves<br><span class="gradient-text">to be shared.</span></h1>
+      <p class="hero-copy">Save a snippet. Share a link. Let anyone copy it and build something great.</p>
+      <div class="hero-stats"><div><b>01</b><span>Write or paste</span></div><div class="stat-line"></div><div><b>02</b><span>Generate a link</span></div><div class="stat-line"></div><div><b>03</b><span>Share & reuse</span></div></div>
+    </section>
+
+    <section id="create" class="workspace panel">
+      <div class="section-head">
+        <div><div class="section-kicker">WORKSPACE</div><h2>Create a snippet</h2><p>Paste code from any project. We store it as text and never run it.</p></div>
+        <span class="private-label"><span>↗</span> Link-based sharing</span>
+      </div>
+      <form id="snippet-form">
+        <div class="field-grid">
+          <label class="field"><span>SNIPPET TITLE</span><input id="title" maxlength="120" placeholder="e.g. PostgreSQL connection helper" value="My first snippet" required></label>
+          <label class="field"><span>LANGUAGE</span><select id="language">
+            <option value="python">Python</option><option value="javascript">JavaScript</option><option value="typescript">TypeScript</option><option value="java">Java</option><option value="sql">SQL</option><option value="html">HTML</option><option value="css">CSS</option><option value="json">JSON</option><option value="bash">Bash</option><option value="go">Go</option><option value="rust">Rust</option><option value="c">C</option><option value="cpp">C++</option><option value="csharp">C#</option><option value="ruby">Ruby</option><option value="php">PHP</option><option value="yaml">YAML</option><option value="powershell">PowerShell</option><option value="plaintext">Plain text</option>
+          </select></label>
+        </div>
+        <div class="editor-shell">
+          <div class="editor-toolbar"><div class="window-dots"><i></i><i></i><i></i></div><span id="editor-label">main.py</span><span class="editor-hint">UTF-8 · <span id="char-count">0</span> chars</span></div>
+          <textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="# Paste your code here..." required></textarea>
+          <div class="editor-footer"><span><i class="green-dot"></i> Plain text storage · no execution</span><span>Up to 100,000 characters</span></div>
+        </div>
+        <div class="form-actions"><p id="form-message" class="message" role="status"></p><button id="save-btn" class="button button-primary" type="submit"><span>Save & generate link</span><span class="arrow">↗</span></button></div>
+      </form>
+    </section>
+
+    <section id="share-result" class="panel result-panel hidden" aria-live="polite">
+      <div class="result-icon">✓</div><div class="result-content"><div class="section-kicker">SNIPPET SAVED</div><h2>Your share link is ready</h2><p>Anyone with this link can view and copy your code. Keep your edit key safe.</p>
+        <div class="share-row"><input id="share-url" readonly aria-label="Share URL"><button id="copy-link" class="button button-secondary">Copy link</button></div>
+        <p id="edit-key-note" class="edit-key-note"></p>
+        <div class="result-actions"><a id="open-share" class="text-link" href="#">Open snippet ↗</a><button id="copy-edit-key" class="text-button">Copy edit key</button></div>
+      </div>
+    </section>
+
+    <section id="my-snippets" class="my-snippets">
+      <div class="section-head list-head"><div><div class="section-kicker">YOUR LIBRARY</div><h2>My snippets <span id="snippet-total" class="count-badge">0</span></h2><p>Snippets created in this browser are listed here.</p></div><div class="search-wrap"><span>⌕</span><input id="search" placeholder="Search your snippets..." aria-label="Search your snippets"></div></div>
+      <div id="snippet-list" class="snippet-list"><div class="empty-state"><div class="empty-icon">{ }</div><h3>Your library is waiting</h3><p>Save your first snippet and it will appear here on this device.</p></div></div>
+    </section>
+    <section class="feature-grid">
+      <article class="feature-card"><div class="feature-icon purple">↗</div><h3>Share in seconds</h3><p>Every snippet gets a unique URL. Send it to a teammate or save it for later.</p></article>
+      <article class="feature-card"><div class="feature-icon blue">⎘</div><h3>Copy without fuss</h3><p>One click copies the full snippet, preserving indentation and line breaks.</p></article>
+      <article class="feature-card"><div class="feature-icon green">⌘</div><h3>Your code stays yours</h3><p>Only the creator's browser has the edit key. Viewers can read and copy, not change it.</p></article>
+    </section>
+    <footer><a class="brand footer-brand" href="/"><span class="brand-mark">&lt;/&gt;</span><span>Code<span class="brand-light">Share</span></span></a><span>Made for developers who share.</span><span>Built with FastAPI + PostgreSQL</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
